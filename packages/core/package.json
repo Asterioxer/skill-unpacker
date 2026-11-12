@@ -28,7 +28,7 @@
   "module": "./src/index.mjs",
   "types": "./types/index.d.ts",
   "bin": {
-    "skill-unpacker": "./bin/skill-unpacker.js"
+    "skill-unpacker": "bin/skill-unpacker.js"
   },
   "exports": {
     ".": {

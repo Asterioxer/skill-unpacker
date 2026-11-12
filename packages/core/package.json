@@ -1,0 +1,59 @@
+{
+  "name": "skill-unpacker",
+  "version": "0.1.0",
+  "description": "Secure inspection, extraction, validation, and repackaging engine for .skill and .zip archives",
+  "author": "Asterioxer",
+  "license": "MIT",
+  "homepage": "https://github.com/Asterioxer/skill-unpacker#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asterioxer/skill-unpacker.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/Asterioxer/skill-unpacker/issues"
+  },
+  "keywords": [
+    "claude-skills",
+    "skill",
+    "unpacker",
+    "zip",
+    "archive",
+    "security",
+    "zip-slip",
+    "agent",
+    "developer-tools"
+  ],
+  "main": "./src/index.js",
+  "module": "./src/index.mjs",
+  "types": "./types/index.d.ts",
+  "bin": {
+    "skill-unpacker": "./bin/skill-unpacker.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./src/index.mjs",
+      "require": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "bin",
+    "types",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "prepack": "npm test"
+  },
+  "dependencies": {
+    "yauzl": "^3.2.0",
+    "yazl": "^3.3.1"
+  }
+}

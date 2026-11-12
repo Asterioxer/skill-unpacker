@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Unpacker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">SU</div><div><b>Skill Unpacker</b><small>PACKAGE WORKBENCH</small></div></div>
+      <div class="nav-label">WORKSPACE</div>
+      <button class="nav-item active" data-view="unpack"><span>▣</span> Unpack & inspect</button>
+      <button class="nav-item" data-view="validate"><span>✓</span> Validate skill</button>
+      <button class="nav-item" data-view="pack"><span>▤</span> Repackage skill</button>
+      <div class="sidebar-bottom">
+        <div class="safe-card"><div class="safe-icon">盾</div><b>Local-first processing</b><p>Your archives stay on this computer. Extraction is guarded against common ZIP path traversal attacks.</p></div>
+        <small class="version">VERSION 0.1.0 · WINDOWS</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div><span class="eyebrow">SKILL PACKAGE TOOLKIT</span><h1 id="page-title">Unpack a skill package</h1><p id="page-subtitle">Inspect the contents of a .skill or .zip archive before extracting it.</p></div><div class="top-chip"><i></i> LOCAL ENGINE</div></header>
+
+      <section id="view-unpack" class="view active">
+        <div class="dropzone" id="dropzone">
+          <div class="upload-icon">⇧</div><h2>Drop a .skill or .zip file here</h2><p>or browse files on your computer</p>
+          <button class="primary" id="browse-btn">Choose package <span>↗</span></button>
+          <div class="file-hint">SUPPORTED: .SKILL · .ZIP</div>
+        </div>
+        <div id="archive-panel" class="panel hidden">
+          <div class="panel-head"><div><span class="eyebrow">ARCHIVE OVERVIEW</span><h2 id="archive-name">package.skill</h2></div><button class="quiet" id="clear-btn">Clear</button></div>
+          <div class="stats" id="archive-stats"></div>
+          <div class="content-grid">
+            <div class="subpanel">
+              <div class="subhead">PACKAGE CONTENTS <span id="entry-count"></span></div>
+              <input type="text" id="file-search" class="search-input" placeholder="Search archive entries…">
+              <div id="file-list" class="file-list"></div>
+            </div>
+            <div class="subpanel detail">
+              <div class="subhead">PACKAGE CHECK</div>
+              <div id="package-check"></div>
+              <div class="extract-box">
+                <b>Extraction destination</b>
+                <p>Choose where the package should be unpacked.</p>
+                <button class="secondary full" id="destination-btn">Choose destination folder</button>
+                <div id="destination-label" class="path-label">No destination selected</div>
+                <button class="primary full" id="extract-btn" disabled>Extract package <span>→</span></button>
+                <div id="extract-progress-container" class="progress-box hidden">
+                  <div class="progress-bar"><div id="extract-progress-fill" class="progress-fill"></div></div>
+                  <div class="progress-text">
+                    <span id="extract-progress-label">Extracting…</span>
+                    <button class="small-btn danger" id="cancel-extract-btn">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-validate" class="view">
+        <div class="action-card"><div class="large-icon">✓</div><h2>Validate a skill folder</h2><p>Check the root SKILL.md, YAML frontmatter, and basic package structure.</p><button class="primary" id="validate-btn">Select skill folder</button></div>
+        <div id="validation-result" class="panel hidden"></div>
+      </section>
+
+      <section id="view-pack" class="view">
+        <div class="action-card"><div class="large-icon">▤</div><h2>Repackage an edited skill</h2><p>Turn an extracted skill directory back into a distributable .skill archive.</p><button class="primary" id="pack-btn">Select skill folder</button></div>
+        <div id="pack-result" class="panel hidden"></div>
+      </section>
+
+      <footer><span>SKILL UNPACKER</span><span>Built for safer skill package workflows</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="renderer.js"></script>
+</body>
+</html>

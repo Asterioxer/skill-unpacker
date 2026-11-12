@@ -1,0 +1,20 @@
+{
+  "name": "skill-unpacker-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Secure inspection, extraction, validation, and repackaging engine and Windows desktop application for .skill archives.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "npm run test --workspace=packages/core",
+    "start": "npm run start --workspace=apps/desktop",
+    "dev": "npm run dev --workspace=apps/desktop",
+    "dist:win": "npm run dist:win --workspace=apps/desktop"
+  },
+  "devDependencies": {
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12"
+  }
+}

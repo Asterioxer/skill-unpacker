@@ -1,0 +1,41 @@
+{
+  "name": "skill-unpacker-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A secure Windows desktop workbench for inspecting, validating, extracting and repackaging .skill archives.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "dist:win": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "skill-unpacker": "file:../../packages/core"
+  },
+  "devDependencies": {
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "dev.skillunpacker.desktop",
+    "productName": "Skill Unpacker",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
